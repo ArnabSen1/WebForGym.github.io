@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just4fit</title>
+</head>
+<link rel="stylesheet" href="css/style.css">
+<style>
+    body{
+        color: white;
+        margin: 0px;
+        padding: 0px;
+        background: url('./gym.jpg');
+    }
+    .left{
+        display: inline-block;
+        /* border: 2px solid red; */
+        position: absolute;
+        left: 23px;
+        top: 27px;
+
+    }
+    .left img{
+        width: 136px;
+        filter: invert(100%);
+
+    }
+    .left div{
+        text-align:center ;
+        line-height: 19px;
+        font-size: 26px;
+    }
+    .mid{
+        display: block;
+        width: 33%;
+        margin: 20px auto;
+        /*border: 2px solid green;*/
+    }
+    .right{
+        position: absolute;
+        right: 34px;
+        top: 30px;
+        display: inline-block;
+       /* border: 2px solid yellow;*/
+    }
+    .navbar{
+        display: inline-block;
+    }
+    .navbar li{
+        display: inline-block;
+        font-size: 30px;
+    }
+    .navbar li a{
+        color: white;
+        text-decoration: none;
+         padding: 34px 23px;
+    }
+    .navbar.active,.navbar :hover{
+        text-decoration: underline;
+        color: green;
+    }
+    .btn{
+        margin: 0px 9px;
+        background-color: black;
+        color: white;
+        padding: 7px 14px;
+        border:  3px solid grey;
+       /* border-radius: 40px;*/
+        font-size: 23px;
+        cursor: pointer;
+    }
+    .btn :hover{
+        background-color: rgb(17, 17, 17);
+    }
+    .container {
+        border: 0px solid white;
+        margin: 490px -42px;
+        padding: 80px;
+        width: 33%;
+        /*border-radius: 28px;*/
+    }
+
+    .form-group input {
+        font-family: 'Baloo Bhai', cursive;
+        text-align: center;
+        display: block;
+        width: 508px;
+        padding: 1px;
+        border: 2px solid black;
+        margin: 11px auto;
+        font-size: 25px;
+       /* border-radius: 8px;*/
+    }
+
+    .container h1 {
+        text-align: center;
+    }
+
+    .container button {
+        display: block;
+        width: 74%;
+        margin: 20px auto;
+    }
+</style>
+<body>
+    <header class="header">
+        <div class="left">
+          <img src="./bg.jpg" alt="">
+          <div>just4fit</div>
+        </div>
+        <div class="mid">
+            <ul class="navbar">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Fitness calculator</a></li>
+                <li><a href="#">contact us</a></li>
+            </ul>
+
+        </div>
+        <div class="right">
+            <button class="btn">Call us </button>
+            <button class="btn"> email us</button>
+        </div>
+
+    </header>
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-12">
+                    <div class="tab-pane fade show active text-align form-new" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h1>Best Gym form</h1>
+                        <div class="row register-form">
+                            <div class="col-md-12">
+                                <form method="post" autocomplete="off" name="google-sheet">
+                                    <div class="form-group">
+                                        <input type="text" name="Name" class="form-control" placeholder="Your Name *" value="" required=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="Email" class="form-control" placeholder="Your Email *" value="" required=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" name="Phone" class="form-control" placeholder="Your Contact Number *" value="" required=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="Address" class="form-control" placeholder="Your Address *" value="" required=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" name="Age" class="form-control" placeholder="Your Age *" value="" required=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" name="submit" class="btnSubmit btn-block" value="Login" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+      
+    <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyYoERRJ_pYHX6A4Sbud5jrXXMv9TyROBPD5O5-MapQsmYpGLiv0a9gH3qj28W_9fHH/exec'
+    const form = document.forms['google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html> 
